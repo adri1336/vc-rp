@@ -1,0 +1,99 @@
+#define SPECIAL_PHONE_NUMBER_TAXI -2
+
+#define PHONE_TD_X 560.0
+#define PHONE_TD_Y 224.0
+#define PHONE_TD_SIZE_X 104.0
+#define PHONE_TD_SIZE_Y 200.0
+
+#define PHONE_TD_HOUR_SIGNAL_OFFSET_X 7.5
+#define PHONE_TD_HOUR_SIGNAL_OFFSET_Y 11.0
+#define PHONE_TD_BUTTONS_OFFSET_Y 105.0
+#define PHONE_TD_SIGNAL_ICON_SIZE 8.0
+
+#define PHONE_TD_OPTION_OFFSET_X 8.3
+#define PHONE_TD_OPTION_OFFSET_Y 24.0
+#define PHONE_TD_OPTION_OFFSET_BETWEEN 13.0
+
+#define PHONE_TD_AUX_OFFSET_X 10.0
+#define PHONE_TD_AUX0_OFFSET_Y 30.0
+#define PHONE_TD_AUX1_OFFSET_Y 80.0
+
+#define PHONE_TD_KEYBOARD_OFFSET_X 15.0
+#define PHONE_TD_KEYBOARD_OFFSET_Y 121.0
+#define PHONE_TD_KEYBOARD_SIZE_X 14.0
+#define PHONE_TD_KEYBOARD_SIZE_Y 16.0
+#define PHONE_TD_KEYBOARD_OFFSET_BT_X 18.0
+#define PHONE_TD_KEYBOARD_OFFSET_BT_Y 19.0
+
+#define PHONE_DIALLING_INTERVAL 200
+#define PHONE_DIALLING_TIME 2000
+#define PHONE_SPECIAL_DIALLING_TIME 4000
+#define PHONE_MAX_WAIT_TIME 20000
+#define PHONE_ENDED_TIME 2000
+#define UPDATE_PHONE_HOUR_SIGNAL_INTERVAL 20000
+#define PHONE_CALL_UPDATE_INTERVAL 1000
+#define MAX_PHONE_NUMBER_LENGTH 11
+#define MAX_PHONE_OPTIONS 6
+
+enum
+{
+	PHONE_PAGE_OFF,
+	PHONE_PAGE_MAIN,
+	PHONE_PAGE_SERVICES,
+
+	PHONE_PAGE_BOOK,
+	PHONE_PAGE_BOOK_CONTACT,
+	PHONE_PAGE_BOOK_ADD,
+	PHONE_PAGE_BOOK_ADD_NUMBER,
+
+	PHONE_PAGE_CALL_NUMBER,
+	PHONE_PAGE_CALL_DIALLING,
+	PHONE_PAGE_CALL_OUT, //saliente
+	PHONE_PAGE_CALL_IN, //entrante
+	PHONE_PAGE_CALL_ESTABLISHED,
+
+	PHONE_PAGE_CALL_ENDED
+};
+
+forward OnPlayerOpenPhone(playerid, bool:calling);
+forward OnPlayerClosePhone(playerid);
+
+new bool:pPhoneEnabled[MAX_PLAYERS],
+	pPhonePage[MAX_PLAYERS],
+	Timer:pPhone_HourSignal_Timer[MAX_PLAYERS] = {Timer:-1, ...},
+	PlayerText:pPhone_PTD_Base[MAX_PLAYERS][5] = {{PlayerText:INVALID_TEXT_DRAW, ...}, ...},
+	PlayerText:pPhone_PTD_Options[MAX_PLAYERS][MAX_PHONE_OPTIONS] = {{PlayerText:INVALID_TEXT_DRAW, ...}, ...},
+	PlayerText:pPhone_PTD_Aux[MAX_PLAYERS][2] = {{PlayerText:INVALID_TEXT_DRAW, ...}, ...},
+	PlayerText:pPhone_PTD_Keyboard[MAX_PLAYERS][11] = {{PlayerText:INVALID_TEXT_DRAW, ...}, ...},
+
+	Float:pPhone_TD_X[MAX_PLAYERS],
+	Float:pPhone_TD_SX[MAX_PLAYERS],
+
+	pPhoneOptionSelected[MAX_PLAYERS],
+	pPhoneMaxOptions[MAX_PLAYERS],
+	bool:pPhoneEnableOPU[MAX_PLAYERS],
+	pPhone_CallNumber_Str[MAX_PLAYERS][MAX_PHONE_NUMBER_LENGTH + 1],
+	pPhone_DiallingPos[MAX_PLAYERS],
+
+	Timer:pPhone_Dialling_Timer[MAX_PLAYERS] = {Timer:-1, ...},
+	Timer:pPhone_Call_Timer[MAX_PLAYERS] = {Timer:-1, ...},
+	pPhone_Call_Time[MAX_PLAYERS],
+	pPhone_Call_LastBeep[MAX_PLAYERS],
+	pPhone_Call_TimeStarted[MAX_PLAYERS],
+	pPhone_CallInfo[MAX_PLAYERS][3]; //0-numero, 1-pid, 2-aid
+
+#define MAX_PHONE_BOOK_CONTACTS 20
+enum E_pPhoneBook
+{
+	pb_ID,
+	pb_CONTACT[MAX_PHONE_NUMBER_LENGTH + 1],
+	pb_NUMBER
+};
+new pPhoneBook[MAX_PLAYERS][MAX_PHONE_BOOK_CONTACTS][E_pPhoneBook],
+	Iterator:pPhoneBook[MAX_PLAYERS]<MAX_PHONE_BOOK_CONTACTS>,
+	pPhoneBook_Offset[MAX_PLAYERS],
+	pPhoneBook_Indexs[MAX_PLAYERS][MAX_PHONE_OPTIONS],
+	pPhoneBook_SelectedIndex[MAX_PLAYERS],
+
+	pPhoneBook_AddContact[MAX_PLAYERS][MAX_PHONE_NUMBER_LENGTH + 1],
+	pPhoneBook_AddNumber[MAX_PLAYERS];

@@ -1,0 +1,1 @@
+new SERVER_TIME[2], SERVER_WEATHER = 3, worldtime_timer_interval = 1;

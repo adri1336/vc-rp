@@ -1,0 +1,1 @@
+#define PLAYER_LABEL_DISTANCE 3.0

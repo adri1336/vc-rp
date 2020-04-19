@@ -1,0 +1,1 @@
+new Timer:timedkick_timer[MAX_PLAYERS] = {Timer:-1, ...}; 

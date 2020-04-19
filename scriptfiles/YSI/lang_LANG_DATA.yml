@@ -1,0 +1,264 @@
+<YML>
+    <group name="area_action_key">
+		<entry name="GAMETEXT_INFO_CLOSED" style="4" time="2000" />
+	</group>
+    <group name="hospital">
+		<entry name="GAMETEXT_INFO_CURED" style="4" time="2000" />
+	</group>
+    <group name="inv">
+        <entry name="GAMETEXT_INFO_ITEM_DELETE" style="4" time="2000" />
+        <entry name="GAMETEXT_INFO_VEHICLE_OPENED" style="4" time="2000" />
+        <entry name="GAMETEXT_INFO_VEHICLE_CLOSED" style="4" time="2000" />
+        <entry name="GAMETEXT_INFO_VEHICLE_STARTED" style="4" time="2000" />
+        <entry name="GAMETEXT_INFO_VEHICLE_STOPPED" style="4" time="2000" />
+        <entry name="GAMETEXT_INFO_DOOR_OPENED" style="4" time="2000" />
+        <entry name="GAMETEXT_INFO_DOOR_CLOSED" style="4" time="2000" />
+        <entry name="TEXTDRAW_TITLE" style="Draw" />
+        <entry name="TEXTDRAW_INV_FREE_SLOT" style="Draw" />
+	</group>
+    <group name="vehicle_funcs">
+        <entry name="GAMETEXT_INFO_VEHICLE_OPENED" style="4" time="2000" />
+        <entry name="GAMETEXT_INFO_VEHICLE_CLOSED" style="4" time="2000" />
+        <entry name="GAMETEXT_INFO_VEHICLE_STARTED" style="4" time="2000" />
+        <entry name="GAMETEXT_INFO_VEHICLE_STOPPED" style="4" time="2000" />
+        <entry name="GAMETEXT_INFO_VEHICLE_LIGHTS_ON" style="4" time="2000" />
+        <entry name="GAMETEXT_INFO_VEHICLE_LIGHTS_OFF" style="4" time="2000" />
+		<entry name="GAMETEXT_INFO_NO_FUEL" style="4" time="2000" />
+	</group>
+    <group name="gas_station">
+		<entry name="GAMETEXT_INFO_FUELING" style="4" time="2000" />
+        <entry name="GAMETEXT_INFO_FUELED" style="4" time="2000" />
+	</group>
+    <group name="veh_shop_sunshine">
+		<entry name="GAMETEXT_INFO_VEHICLE_SOLD" style="4" time="4000" />
+        <entry name="GAMETEXT_INFO_VEHICLE_BOUGHT" style="4" time="4000" />
+	</group>
+    <group name="driving_school">
+		<entry name="GAMETEXT_INFO_LICENSE_TEST" style="4" time="2000" />
+        <entry name="GAMETEXT_INFO_LICENSE_PASSED" style="4" time="4000" />
+        <entry name="TEXTDRAW_CANCEL_1_MESSAGE" style="Draw" />
+        <entry name="TEXTDRAW_CANCEL_2_MESSAGE" style="Draw" />
+        <entry name="TEXTDRAW_CANCEL_3_MESSAGE" style="Draw" />
+        <entry name="TEXTDRAW_CANCEL_4_MESSAGE" style="Draw" />
+        <entry name="TEXTDRAW_SPEED_LIMIT" style="Draw" />
+	</group>
+    <group name="menu">
+		<entry name="GAMETEXT_INFO_LANG_CHANGED" style="4" time="6000" />
+        <entry name="GAMETEXT_INFO_AR_RESTART" style="4" time="6000" />
+        <entry name="TEXTDRAW_PLAY" style="Draw" />
+        <entry name="TEXTDRAW_INFO" style="Draw" />
+        <entry name="TEXTDRAW_SETTINGS" style="Draw" />
+        <entry name="TEXTDRAW_QUIT" style="Draw" />
+	</group>
+    <group name="rent_vehicles">
+		<entry name="GAMETEXT_INFO_VEHICLE_RENTED" style="4" time="4000" />
+	</group>
+    <group name="shared_commands">
+        <entry name="GAMETEXT_INFO_PROPERTY_PURCHASED" style="4" time="4000" />
+        <entry name="GAMETEXT_INFO_PROPERTY_RENTED" style="4" time="4000" />
+        <entry name="GAMETEXT_INFO_PROPERTY_RENT_ADD" style="4" time="4000" />
+		<entry name="GAMETEXT_INFO_DOOR_OPENED" style="4" time="2000" />
+        <entry name="GAMETEXT_INFO_DOOR_CLOSED" style="4" time="2000" />
+        <entry name="GAMETEXT_INFO_BUSINESS_PURCHASED" style="4" time="4000" />
+	</group>
+    <group name="gps">
+        <entry name="GAMETEXT_INFO_ROUTE_FINISH" style="4" time="4000" />
+	</group>
+    <group name="business">
+		<entry name="GAMETEXT_INFO_PRODUCT_BOUGHT" style="4" time="4000" />
+        <entry name="GAMETEXT_INFO_CHANGES_SAVED" style="4" time="4000" />
+        <entry name="TEXTDRAW_BCATALOG_TITLE" style="Draw" />
+        <entry name="TEXTDRAW_BCATALOG_ID_DOWN" style="Draw" />
+        <entry name="TEXTDRAW_BCATALOG_ID_UP" style="Draw" />
+        <entry name="TEXTDRAW_BCATALOG_PRODUCT" style="Draw" />
+        <entry name="TEXTDRAW_BCATALOG_PRICE_DOWN" style="Draw" />
+        <entry name="TEXTDRAW_BCATALOG_PRICE_UP" style="Draw" />
+        <entry name="TEXTDRAW_BCATALOG_STOCK_DOWN" style="Draw" />
+        <entry name="TEXTDRAW_BCATALOG_STOCK_UP" style="Draw" />
+        <entry name="TEXTDRAW_BCATALOG_SALES_DOWN" style="Draw" />
+        <entry name="TEXTDRAW_BCATALOG_SALES_UP" style="Draw" />
+        <entry name="TEXTDRAW_BCATALOG_ADD_PRODUCT" style="Draw" />
+	</group>
+    <group name="clothing">
+		<entry name="GAMETEXT_INFO_CHAR_CHANGED" style="4" time="4000" />
+        <entry name="GAMETEXT_INFO_CLOTHES_CHANGED" style="4" time="4000" />
+        <entry name="GAMETEXT_INFO_CLOTHES_DELETED" style="4" time="4000" />
+        <entry name="TEXTDRAW_CHARACTER_MENU_TITLE" style="Draw" />
+        <entry name="TEXTDRAW_CLOTHES_MENU_TITLE" style="Draw" />
+	</group>
+    <group name="jobs">
+        <entry name="GAMETEXT_INFO_JOB_STARTED" style="4" time="4000" />
+		<entry name="GAMETEXT_INFO_JOB_FINISHED" style="4" time="4000" />
+        <entry name="TEXTDRAW_JOB_LEVEL_UP" style="Draw" />
+	</group>
+    <group name="taxi">
+        <entry name="GAMETEXT_INFO_TAXI_REQUESTED" style="4" time="4000" />
+		<entry name="GAMETEXT_INFO_TAXI_CANCELLED" style="4" time="4000" />
+        <entry name="TEXTDRAW_TAXIMETER" style="Draw" />
+	</group>
+    <group name="trucker">
+        <entry name="GAMETEXT_INFO_TRAILER_ATTACHED" style="4" time="4000" />
+        <entry name="TEXTDRAW_1_CANCEL" style="Draw" />
+        <entry name="TEXTDRAW_2_CANCEL" style="Draw" />
+        <entry name="TEXTDRAW_1_AUX" style="Draw" />
+        <entry name="TEXTDRAW_2_AUX" style="Draw" />
+        <entry name="TEXTDRAW_3_AUX" style="Draw" />
+        <entry name="TEXTDRAW_4_AUX" style="Draw" />
+        <entry name="TEXTDRAW_5_AUX" style="Draw" />
+	</group>
+    <group name="gun_license">
+        <entry name="GAMETEXT_INFO_LICENSE_PASSED" style="4" time="4000" />
+	</group>
+    <group name="real_estate">
+        <entry name="GAMETEXT_INFO_PROPERTY_SOLD" style="4" time="4000" />
+        <entry name="GAMETEXT_INFO_BUSINESS_SOLD" style="4" time="4000" />
+	</group>
+    <group name="car_workshop">
+        <entry name="GAMETEXT_INFO_WORK_DONE" style="4" time="4000" />
+	</group>
+    <group name="autopilot">
+        <entry name="GAMETEXT_INFO_ARRIVED" style="4" time="4000" />
+        <entry name="TEXTDRAW_DESTROYED" style="Draw" />
+        <entry name="TEXTDRAW_WARNING" style="Draw" />
+	</group>
+    <group name="atm">
+        <entry name="TEXTDRAW_WITHDRAW" style="Draw" />
+        <entry name="TEXTDRAW_DEPOSIT" style="Draw" />
+        <entry name="TEXTDRAW_EXIT" style="Draw" />
+	</group>
+    <group name="toys">
+        <entry name="TEXTDRAW_TOYS_TITLE" style="Draw" />
+	</group>
+    <group name="achievements">
+        <entry name="TD_ACHIEVEMENT_NEW_USER" style="Draw" />
+        <entry name="TD_ACHIEVEMENT_RENT_CAR" style="Draw" />
+        <entry name="TD_ACHIEVEMENT_PURCHASE_CAR" style="Draw" />
+        <entry name="TD_ACHIEVEMENT_PURCHASE_USED_CAR" style="Draw" />
+        <entry name="TD_ACHIEVEMENT_DRIVER_LICENSE" style="Draw" />
+        <entry name="TD_ACHIEVEMENT_HOSPITAL_BED" style="Draw" />
+        <entry name="TD_ACHIEVEMENT_USE_ATM" style="Draw" />
+        <entry name="TD_ACHIEVEMENT_PURCHASE_PROPERTY" style="Draw" />
+        <entry name="TD_ACHIEVEMENT_RENT_PROPERTY" style="Draw" />
+        <entry name="TD_ACHIEVEMENT_PURCHASE_BUSINESS" style="Draw" />
+        <entry name="TD_ACHIEVEMENT_GUN_LICENSE" style="Draw" />
+        <entry name="TD_ACHIEVEMENT_INTRO" style="Draw" />
+	</group>
+    <group name="gunsmith">
+        <entry name="TEXTDRAW_KEY" style="Draw" />
+	</group>
+    <group name="vinv">
+        <entry name="TEXTDRAW_TITLE" style="Draw" />
+        <entry name="TEXTDRAW_ADD_BUTTON" style="Draw" />
+        <entry name="TEXTDRAW_CLOSE_INV" style="Draw" />
+        <entry name="TEXTDRAW_INV_FREE_SLOT" style="Draw" />
+        <entry name="GAMETEXT_INFO_TAKEN" style="4" time="4000" />
+        <entry name="GAMETEXT_INFO_DELETED" style="4" time="4000" />
+	</group>
+    <group name="register">
+        <entry name="TEXTDRAW_GENDER" style="Draw" />
+        <entry name="TEXTDRAW_GENDER_MALE" style="Draw" />
+        <entry name="TEXTDRAW_GENDER_FEMALE" style="Draw" />
+        <entry name="TEXTDRAW_CHARACTER" style="Draw" />
+        <entry name="TEXTDRAW_CONTINUE" style="Draw" />
+	</group>
+    <group name="properties">
+        <entry name="TEXTDRAW_TOUR_MESSAGE" style="Draw" />
+        <entry name="TEXTDRAW_TOUR_ENDED" style="Draw" />
+	</group>
+    <group name="pstats">
+        <entry name="TEXTDRAW_HUNGRY" style="Draw" />
+        <entry name="TEXTDRAW_THIRST" style="Draw" />
+        <entry name="TEXTDRAW_STATS" style="Draw" />
+	</group>
+    <group name="phone">
+        <entry name="PHONE_1_OPTION" style="Draw" />
+        <entry name="PHONE_2_OPTION" style="Draw" />
+        <entry name="PHONE_3_OPTION" style="Draw" />
+        <entry name="PHONE_4_OPTION" style="Draw" />
+        <entry name="PHONE_5_OPTION" style="Draw" />
+        <entry name="PHONE_6_OPTION" style="Draw" />
+        <entry name="PHONE_7_OPTION" style="Draw" />
+        <entry name="PHONE_8_OPTION" style="Draw" />
+        <entry name="PHONE_9_OPTION" style="Draw" />
+        <entry name="PHONE_10_OPTION" style="Draw" />
+        <entry name="PHONE_11_OPTION" style="Draw" />
+        <entry name="PHONE_12_OPTION" style="Draw" />
+        <entry name="PHONE_13_OPTION" style="Draw" />
+        <entry name="PHONE_14_OPTION" style="Draw" />
+        <entry name="PHONE_15_OPTION" style="Draw" />
+        <entry name="PHONE_16_OPTION" style="Draw" />
+        <entry name="PHONE_17_OPTION" style="Draw" />
+        <entry name="PHONE_18_OPTION" style="Draw" />
+        <entry name="PHONE_19_OPTION" style="Draw" />
+        <entry name="PHONE_20_OPTION" style="Draw" />
+        <entry name="PHONE_21_OPTION" style="Draw" />
+	</group>
+    <group name="intro">
+        <entry name="TEXTDRAW_EXIT" style="Draw" />
+	</group>
+    <group name="tutorial">
+        <entry name="TUTORIAL_1_OBJECTIVE" style="Draw" />
+        <entry name="TUTORIAL_2_OBJECTIVE" style="Draw" />
+        <entry name="TUTORIAL_3_OBJECTIVE" style="Draw" />
+        <entry name="TUTORIAL_4_OBJECTIVE" style="Draw" />
+        <entry name="TUTORIAL_5_OBJECTIVE" style="Draw" />
+        <entry name="TUTORIAL_6_OBJECTIVE" style="Draw" />
+        <entry name="TUTORIAL_7_OBJECTIVE" style="Draw" />
+        <entry name="TUTORIAL_8_OBJECTIVE" style="Draw" />
+        <entry name="TUTORIAL_9_OBJECTIVE" style="Draw" />
+        <entry name="TUTORIAL_10_OBJECTIVE" style="Draw" />
+        <entry name="TUTORIAL_11_OBJECTIVE" style="Draw" />
+        <entry name="TUTORIAL_12_OBJECTIVE" style="Draw" />
+        <entry name="TUTORIAL_13_OBJECTIVE" style="Draw" />
+        <entry name="TUTORIAL_14_OBJECTIVE" style="Draw" />
+        <entry name="TUTORIAL_15_OBJECTIVE" style="Draw" />
+        <entry name="TUTORIAL_16_OBJECTIVE" style="Draw" />
+        <entry name="TUTORIAL_1_MESSAGE" style="Draw" />
+        <entry name="TUTORIAL_2_MESSAGE" style="Draw" />
+        <entry name="TUTORIAL_3_MESSAGE" style="Draw" />
+        <entry name="TUTORIAL_4_MESSAGE" style="Draw" />
+        <entry name="TUTORIAL_5_MESSAGE" style="Draw" />
+        <entry name="TUTORIAL_6_MESSAGE" style="Draw" />
+        <entry name="TUTORIAL_7_MESSAGE" style="Draw" />
+        <entry name="TUTORIAL_8_MESSAGE" style="Draw" />
+        <entry name="TUTORIAL_9_MESSAGE" style="Draw" />
+        <entry name="TUTORIAL_10_MESSAGE" style="Draw" />
+	</group>
+    <group name="infomsg_render">
+        <entry name="TEXTDRAW_VINV_MSG" style="Draw" />
+        <entry name="TEXTDRAW_BOOMBOX_MSG" style="Draw" />
+        <entry name="TEXTDRAW_ENTRANCE_1_MSG" style="Draw" />
+        <entry name="TEXTDRAW_ENTRANCE_2_MSG" style="Draw" />
+        <entry name="TEXTDRAW_INTERIOR_MSG" style="Draw" />
+        <entry name="TEXTDRAW_ATM_MSG" style="Draw" />
+        <entry name="TEXTDRAW_HOSPITAL_BED_MSG" style="Draw" />
+        <entry name="TEXTDRAW_BANK_MSG" style="Draw" />
+        <entry name="TEXTDRAW_SVEHS_MSG" style="Draw" />
+        <entry name="TEXTDRAW_GAS_MSG" style="Draw" />
+        <entry name="TEXTDRAW_DRIVING_SCHOOL_MSG" style="Draw" />
+        <entry name="TEXTDRAW_PROPERTY_MSG" style="Draw" />
+        <entry name="TEXTDRAW_BSALE_MSG" style="Draw" />
+        <entry name="TEXTDRAW_BUSINESS_1_MSG" style="Draw" />
+        <entry name="TEXTDRAW_BUSINESS_2_MSG" style="Draw" />
+        <entry name="TEXTDRAW_JOB_1_MSG" style="Draw" />
+        <entry name="TEXTDRAW_JOB_2_MSG" style="Draw" />
+        <entry name="TEXTDRAW_INTEREST_MSG" style="Draw" />
+        <entry name="TEXTDRAW_GUNSMITH_MSG" style="Draw" />
+        <entry name="TEXTDRAW_GUN_LICENSE_MSG" style="Draw" />
+        <entry name="TEXTDRAW_ACTION_MSG" style="Draw" />
+        <entry name="TEXTDRAW_ENV_AREA_TYPE_DANCE" style="Draw" />
+        <entry name="TEXTDRAW_ENV_AREA_TYPE_BED" style="Draw" />
+        <entry name="TEXTDRAW_ENV_AREA_TYPE_SEAT" style="Draw" />
+        <entry name="TEXTDRAW_ENV_AREA_TYPE_PROST" style="Draw" />ITUTE_MONEY
+        <entry name="TEXTDRAW_ENV_DEFAULT" style="Draw" />
+	</group>
+    <group name="boombox">
+        <entry name="GAMETEXT_INFO_TAKE" style="4" time="4000" />
+	</group>
+    <group name="minimap">
+        <entry name="TEXTDRAW_NO_SIGNAL" style="Draw" />
+	</group>
+    <group name="player_task">
+        <entry name="MESSAGE_LEVEL_UP" style="Draw" />
+	</group>
+</YML>

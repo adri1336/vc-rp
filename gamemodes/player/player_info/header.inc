@@ -1,0 +1,81 @@
+#define DEFAULT_AR_WIDTH 1920
+#define DEFAULT_AR_HEIGHT 1080
+forward OnAccountDataLoad(playerid);
+
+enum PLAYER_WORLD_STATES
+{
+	PLAYER_WORLD_STATE_STREET,
+	PLAYER_WORLD_STATE_ENTRANCE,
+	PLAYER_WORLD_STATE_PROPERTY,
+	PLAYER_WORLD_STATE_BUSINESS,
+	PLAYER_WORLD_STATE_OTHER
+};
+
+enum enum_PI
+{
+	ORM:pi_ORM,
+	pi_ID,
+	pi_NAME[24],
+	pi_SALT[16],
+	pi_PASSWD[65],
+	pi_IP[16], pi_CONNECTION_IP[16],
+	pi_REGISTER_DATE[24],
+	pi_LAST_CONNECTION[24],
+	pi_TIME_PLAYING,
+	pi_MONEY,
+	pi_LEVEL,
+	Float:pi_REPUTATION,
+	pi_LANG[3],
+	Language:pi_LANG_ID,
+	pi_EMAIL[64],
+	pi_CONNECTED,
+	pi_PLAYERID,
+	pi_ADMIN_LEVEL,
+	Float:pi_X,
+	Float:pi_Y,
+	Float:pi_Z,
+	Float:pi_ANGLE,
+	pi_INTERIORID,
+	pi_WORLDID,
+	Float:pi_HEALTH,
+	Float:pi_ARMOUR,
+	pi_GENDER, //0 hombre, 1 mujer
+	Float:pi_HUNGRY,
+	Float:pi_THIRST,
+	PLAYER_WORLD_STATES:pi_WORLD_STATE,
+	pi_WORLD_STATE_INDEX,
+	pi_WORLD_STATE_EXTRA_INDEX,
+	pi_WORLD_STATE_ID,
+	pi_WORLD_STATE_EXTRA_ID,
+	pi_BANK_MONEY,
+	pi_KILLS,
+	pi_DEATHS,
+	pi_AR_WIDTH,
+	pi_AR_HEIGHT,
+	pi_GPS_MINIMAP,
+	pi_GPS_LOCATION,
+	pi_GPS_ROUTE,
+	pi_GPS_OBJECTIVES,
+	pi_GPS_PROPERTIES,
+	pi_GPS_BUSINESS,
+	pi_GPS_VEHICLES,
+	pi_PHONE_NUMBER,
+	pi_PHONE_ON,
+	pi_CLOTHING_CHARACTER,
+	CLOTHES_TYPES:pi_CLOTHING_CLOTHE,
+	pi_LAST_CHARACTER_CHANGE[24],
+	pi_HELP_CHANNEL,
+	pi_ADMIN_MESSAGES,
+	TutorialFlags:pi_TUTORIAL,
+	pi_MPH,
+
+	//nodb
+	pi_RP_NAME[24],
+	pi_FIRST_NAME[24],
+	pi_SUB_NAME[24]
+};
+new PI[MAX_PLAYERS][enum_PI],
+	bool:pLoggedIn[MAX_PLAYERS],
+	Float:New_User_Pos[4] = {4563.418945, 168.347625, 15.361562, 0.0};
+
+forward OnPlayerWStateChange(playerid, PLAYER_WORLD_STATES:worldstate, index, extra_index);

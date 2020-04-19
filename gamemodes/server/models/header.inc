@@ -1,0 +1,1 @@
+#define TEXTDRAW_CUSTOM_PATH "mdl-1000:"

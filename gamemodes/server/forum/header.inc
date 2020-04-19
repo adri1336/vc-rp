@@ -1,0 +1,1 @@
+new MySQL:vc_forum_db;

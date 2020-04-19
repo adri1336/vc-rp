@@ -1,0 +1,50 @@
+#define PLAYER_GPS_TD_X 320.0//185.0
+#define PLAYER_GPS_TD_Y 117.0
+#define PLAYER_GPS_TD_SIZE_X 336.0 //512
+#define PLAYER_GPS_TD_SIZE_Y 301.0
+#define PLAYER_GPS_MAP_SIZE_X 265.78 //405
+#define PLAYER_GPS_MAP_PADDING 4.5
+#define PLAYER_GPS_CLOSE_BUTTON_PADDING 3.0
+#define PLAYER_GPS_OPTION_OFFSETY 12.0
+#define PLAYER_GPS_OPTION_PADDING 4.5
+#define PLAYER_GPS_TEXT_MAX_SIZE 36.0
+#define PLAYER_GPS_TEXT_LETTERY 1.143705
+#define PLAYER_GPS_ICON_SIZE 5.0
+#define PLAYER_GPS_ICON_PADDING 1.0
+#define PLAYER_GPS_ICON_MAP_SIZE 10.0
+
+#define GPS_UPDATE_INTERVAL 500
+
+enum GPS_Options
+{
+	GPS_OPTION_MINIMAP,
+	GPS_OPTION_LOCATION,
+	GPS_OPTION_ROUTE,
+	GPS_OPTION_CANCEL_ROUTE,
+	GPS_OPTION_CATEGORY_OBJECTIVES,
+	GPS_OPTION_CATEGORY_PROPERTIES,
+	GPS_OPTION_CATEGORY_BUSINESS,
+	GPS_OPTION_CATEGORY_VEHICLES,
+	GPS_OPTION_CATEGORY_DB
+};
+
+enum E_GPS_Options_PTD
+{
+	PlayerText:gps_option_ICON,	
+	PlayerText:gps_option_TICK,	
+	PlayerText:gps_option_TEXT	
+};
+
+new bool:pGps[MAX_PLAYERS],
+	pGpsAutopilotVehicle[MAX_PLAYERS] = {INVALID_VEHICLE_ID, ...},
+	PlayerText:GPS_Body_PTD[MAX_PLAYERS][4] = {{PlayerText:INVALID_TEXT_DRAW, ...}, ...},
+	GPS_MapID[MAX_PLAYERS] = {INVALID_VC_TDMAP_ID, ...},
+	GPS_Options_PTD[MAX_PLAYERS][_:GPS_Options + MAX_GPS_CATEGORIES][E_GPS_Options_PTD],
+	Float:pIconMapSize[MAX_PLAYERS],
+	pGpsCircle[MAX_PLAYERS] = {INVALID_STREAMER_ID, ...},
+	Player_Gps_Cats[MAX_PLAYERS][MAX_GPS_CATEGORIES];
+
+forward OnPlayerOpenGps(playerid);
+forward OnPlayerCloseGps(playerid);
+forward OnPlayerGpsRouteCalc(playerid, bool:gps);
+forward OnPlayerToggleMinimap(playerid, bool:toogle);

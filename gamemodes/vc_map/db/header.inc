@@ -1,0 +1,1 @@
+new MySQL:vc_map_db;

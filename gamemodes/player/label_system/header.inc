@@ -1,0 +1,1 @@
+new Text3D:PlayerLabel[MAX_PLAYERS];

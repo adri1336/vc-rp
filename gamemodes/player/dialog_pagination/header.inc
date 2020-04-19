@@ -1,0 +1,13 @@
+#define DIALOG_PAGINATION_SIZE 10
+#define DIALOG_PAGINATION_EXTRA_BUTTONS 4
+#define DIALOG_PAGINATION_NEXT -1
+#define DIALOG_PAGINATION_PREVIOUS -2
+#define DIALOG_PAGINATION_ADD -3
+#define DIALOG_PAGINATION_DELETE -4
+
+new pCurrentDialogPage[MAX_PLAYERS],
+	pExtraButtons[MAX_PLAYERS][DIALOG_PAGINATION_SIZE + DIALOG_PAGINATION_EXTRA_BUTTONS],
+
+	//extra funcs
+	pDialogPagination_FirstIndex[MAX_PLAYERS] = {-1, ...},
+	pDialogPagination_LastIndex[MAX_PLAYERS] = {-1, ...};

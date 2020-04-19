@@ -1,0 +1,343 @@
+#define MAX_SERVER_VEHICLES MAX_VEHICLES - (MAX_PLAYERS * MAX_PLAYER_VEHICLES)
+#define MIN_VEHICLE_HEALTH 300.0
+#define INVALID_VEHICLE_INDEX -1
+#define DEFAULT_VEHICLE_RESPAWN_DELAY 300
+
+enum VEHICLE_GROUPS //unused
+{
+	VEHICLE_GROUP_CAR,
+	VEHICLE_GROUP_MOTORCYCLE,
+	VEHICLE_GROUP_BIKE,
+	VEHICLE_GROUP_TRUCK,
+	VEHICLE_GROUP_TRAILER,
+	VEHICLE_GROUP_TRAIN,
+	VEHICLE_GROUP_RC,
+	VEHICLE_GROUP_PLANE,
+	VEHICLE_GROUP_HELICOPTER,
+	VEHICLE_GROUP_BOAT,
+	VEHICLE_GROUP_BUS,
+	VEHICLE_GROUP_TANK,
+	VEHICLE_GROUP_OTHER
+};
+
+enum enum_VehicleData
+{
+	vdata_NAME[24],
+	VEHICLE_GROUPS:vdata_GROUP, //unused
+	Float:vdata_MAX_SPEED, //unused
+	Float:vdata_MAX_FUEL,
+	vdata_SEATS
+};
+
+new VehicleData[][enum_VehicleData] =
+{
+	{"Landstalker", VEHICLE_GROUP_CAR, 159.00, 80.00, 4},
+	{"Bravura", VEHICLE_GROUP_CAR, 148.00, 45.00, 2},
+	{"Buffalo", VEHICLE_GROUP_CAR, 188.00, 50.00, 2},
+	{"Linerunner", VEHICLE_GROUP_TRUCK, 110.00, 150.00, 2},
+	{"Perrenial", VEHICLE_GROUP_CAR, 134.00, 50.00, 4},
+	{"Sentinel", VEHICLE_GROUP_CAR, 165.00, 45.00, 4},
+	{"Dumper", VEHICLE_GROUP_TRUCK, 111.00, 20.00, 1},
+	{"Firetruck", VEHICLE_GROUP_TRUCK, 149.00, 120.00, 2},
+	{"Trashmaster", VEHICLE_GROUP_TRUCK, 101.00, 80.00, 2},
+	{"Stretch", VEHICLE_GROUP_CAR, 159.00, 80.00, 4},
+	{"Manana", VEHICLE_GROUP_CAR, 131.00, 40.00, 2},
+	{"Infernus", VEHICLE_GROUP_CAR, 223.00, 80.00, 2},
+	{"Voodoo", VEHICLE_GROUP_CAR, 170.00, 45.00, 2},
+	{"Pony", VEHICLE_GROUP_CAR, 111.00, 60.00, 4},
+	{"Mule", VEHICLE_GROUP_TRUCK, 106.00, 60.00, 2},
+	{"Cheetah", VEHICLE_GROUP_CAR, 194.00, 65.00, 2},
+	{"Ambulance", VEHICLE_GROUP_CAR, 155.00, 120.00, 4},
+	{"Leviathan", VEHICLE_GROUP_HELICOPTER, 1.00, 1.00, 2},
+	{"Moonbeam", VEHICLE_GROUP_CAR, 116.00, 60.00, 4},
+	{"Esperanto", VEHICLE_GROUP_CAR, 150.00, 40.00, 2},
+	{"Taxi", VEHICLE_GROUP_CAR, 146.00, 60.00, 4},
+	{"Washington", VEHICLE_GROUP_CAR, 155.00, 50.00, 4},
+	{"Bobcat", VEHICLE_GROUP_CAR, 141.00, 70.00, 2},
+	{"Mr. Whoopee", VEHICLE_GROUP_CAR, 99.00, 60.00, 2},
+	{"BF Injection", VEHICLE_GROUP_CAR, 136.00, 30.00, 2},
+	{"Hunter", VEHICLE_GROUP_HELICOPTER, 1.00, 1.00, 1},
+	{"Premier", VEHICLE_GROUP_CAR, 175.00, 70.00, 4},
+	{"Enforcer", VEHICLE_GROUP_CAR, 167.00, 120.00, 4},
+	{"Securicar", VEHICLE_GROUP_CAR, 158.00, 80.00, 4},
+	{"Banshee", VEHICLE_GROUP_CAR, 203.00, 65.00, 2},
+	{"Predator", VEHICLE_GROUP_BOAT, 1.00, 1.00, 1},
+	{"Bus", VEHICLE_GROUP_BUS, 131.00, 180.00, 500},
+	{"Rhino", VEHICLE_GROUP_TANK, 95.00, 200.00, 1},
+	{"Barracks", VEHICLE_GROUP_TRUCK, 111.00, 150.00, 2},
+	{"Hotknife", VEHICLE_GROUP_CAR, 168.00, 50.00, 2},
+	{"Article Trailer", VEHICLE_GROUP_TRAILER, 1.00, 1.00, 0},
+	{"Previon", VEHICLE_GROUP_CAR, 150.00, 40.00, 2},
+	{"Coach", VEHICLE_GROUP_BUS, 159.00, 150.00, 500},
+	{"Cabbie", VEHICLE_GROUP_CAR, 144.00, 80.00, 4},
+	{"Stallion", VEHICLE_GROUP_CAR, 170.00, 60.00, 2},
+	{"Rumpo", VEHICLE_GROUP_CAR, 137.00, 60.00, 4},
+	{"RC Bandit", VEHICLE_GROUP_RC, 1.00, 1.00, 1},
+	{"Romero", VEHICLE_GROUP_CAR, 140.00, 60.00, 2},
+	{"Packer", VEHICLE_GROUP_TRUCK, 127.00, 150.00, 2},
+	{"Monster", VEHICLE_GROUP_CAR, 111.00, 80.00, 2},
+	{"Admiral", VEHICLE_GROUP_CAR, 165.00, 65.00, 4},
+	{"Squallo", VEHICLE_GROUP_BOAT, 1.00, 1.00, 1},
+	{"Seasparrow", VEHICLE_GROUP_HELICOPTER, 1.00, 1.00, 2},
+	{"Pizzaboy", VEHICLE_GROUP_MOTORCYCLE, 116.00, 20.00, 1},
+	{"Tram", VEHICLE_GROUP_TRAIN, 1.00, 1.00, 0},
+	{"Article Trailer 2", VEHICLE_GROUP_TRAILER, 1.00, 1.00, 0},
+	{"Turismo", VEHICLE_GROUP_CAR, 195.00, 80.00, 2},
+	{"Speeder", VEHICLE_GROUP_BOAT, 1.00, 1.00, 1},
+	{"Reefer", VEHICLE_GROUP_BOAT, 1.00, 1.00, 1},
+	{"Tropic", VEHICLE_GROUP_BOAT, 1.00, 1.00, 1},
+	{"Flatbed", VEHICLE_GROUP_TRUCK, 159.00, 120.00, 2},
+	{"Yankee", VEHICLE_GROUP_TRUCK, 107.00, 50.00, 2},
+	{"Caddy", VEHICLE_GROUP_OTHER, 96.00, 10.00, 2},
+	{"Solair", VEHICLE_GROUP_CAR, 158.00, 80.00, 4},
+	{"Topfun Van", VEHICLE_GROUP_CAR, 137.00, 60.00, 4},
+	{"Skimmer", VEHICLE_GROUP_PLANE, 1.00, 1.00, 2},
+	{"PCJ-600", VEHICLE_GROUP_MOTORCYCLE, 167.00, 45.00, 2},
+	{"Faggio", VEHICLE_GROUP_MOTORCYCLE, 107.00, 20.00, 2},
+	{"Freeway", VEHICLE_GROUP_MOTORCYCLE, 142.00, 60.00, 2},
+	{"RC Baron", VEHICLE_GROUP_RC, 1.00, 1.00, 1},
+	{"RC Raider", VEHICLE_GROUP_RC, 1.00, 1.00, 1},
+	{"Glendale", VEHICLE_GROUP_CAR, 148.00, 50.00, 4},
+	{"Oceanic", VEHICLE_GROUP_CAR, 141.00, 50.00, 4},
+	{"Sanchez", VEHICLE_GROUP_MOTORCYCLE, 143.00, 40.00, 2},
+	{"Sparrow", VEHICLE_GROUP_HELICOPTER, 1.00, 1.00, 2},
+	{"Patriot", VEHICLE_GROUP_CAR, 158.00, 120.00, 4},
+	{"Quad", VEHICLE_GROUP_MOTORCYCLE, 111.00, 25.00, 2},
+	{"Coastguard", VEHICLE_GROUP_BOAT, 1.00, 1.00, 1},
+	{"Dinghy", VEHICLE_GROUP_BOAT, 1.00, 1.00, 1},
+	{"Hermes", VEHICLE_GROUP_CAR, 150.00, 80.00, 2},
+	{"Sabre", VEHICLE_GROUP_CAR, 174.00, 45.00, 2},
+	{"Rustler", VEHICLE_GROUP_PLANE, 1.00, 1.00, 1},
+	{"ZR-350", VEHICLE_GROUP_CAR, 188.00, 60.00, 2},
+	{"Walton", VEHICLE_GROUP_CAR, 118.00, 50.00, 2},
+	{"Regina", VEHICLE_GROUP_CAR, 141.00, 80.00, 4},
+	{"Comet", VEHICLE_GROUP_CAR, 186.00, 45.00, 2},
+	{"BMX", VEHICLE_GROUP_BIKE, 1.00, 1.00, 1},
+	{"Burrito", VEHICLE_GROUP_CAR, 158.00, 60.00, 4},
+	{"Camper", VEHICLE_GROUP_CAR, 124.00, 50.00, 3},
+	{"Marquis", VEHICLE_GROUP_BOAT, 1.00, 1.00, 1},
+	{"Baggage", VEHICLE_GROUP_OTHER, 100.00, 20.00, 1},
+	{"Dozer", VEHICLE_GROUP_OTHER, 65.00, 25.00, 1},
+	{"Maverick", VEHICLE_GROUP_HELICOPTER, 1.00, 1.00, 4},
+	{"SAN News Maverick", VEHICLE_GROUP_HELICOPTER, 1.00, 1.00, 2},
+	{"Rancher", VEHICLE_GROUP_CAR, 140.00, 90.00, 2},
+	{"FBI Rancher", VEHICLE_GROUP_CAR, 158.00, 90.00, 4},
+	{"Virgo", VEHICLE_GROUP_CAR, 150.00, 45.00, 2},
+	{"Greenwood", VEHICLE_GROUP_CAR, 141.00, 45.00, 4},
+	{"Jetmax", VEHICLE_GROUP_BOAT, 1.00, 1.00, 1},
+	{"Hotring Racer", VEHICLE_GROUP_CAR, 216.00, 80.00, 2},
+	{"Sandking", VEHICLE_GROUP_CAR, 178.00, 60.00, 2},
+	{"Blista Compact", VEHICLE_GROUP_CAR, 164.00, 60.00, 2},
+	{"Police Maverick", VEHICLE_GROUP_HELICOPTER, 1.00, 1.00, 4},
+	{"Boxville", VEHICLE_GROUP_TRUCK, 109.00, 60.00, 4},
+	{"Benson", VEHICLE_GROUP_TRUCK, 124.00, 70.00, 2},
+	{"Mesa", VEHICLE_GROUP_CAR, 141.00, 60.00, 2},
+	{"RC Goblin", VEHICLE_GROUP_RC, 1.00, 1.00, 1},
+	{"Hotring Racer A", VEHICLE_GROUP_CAR, 216.00, 80.00, 2},
+	{"Hotring Racer B", VEHICLE_GROUP_CAR, 216.00, 80.00, 2},
+	{"Bloodring Banger", VEHICLE_GROUP_CAR, 174.00, 40.00, 2},
+	{"Rancher Lure", VEHICLE_GROUP_CAR, 140.00, 80.00, 2},
+	{"Super GT", VEHICLE_GROUP_CAR, 180.00, 60.00, 2},
+	{"Elegant", VEHICLE_GROUP_CAR, 167.00, 65.00, 4},
+	{"Journey", VEHICLE_GROUP_CAR, 108.00, 90.00, 2},
+	{"Bike", VEHICLE_GROUP_BIKE, 1.00, 1.00, 1},
+	{"Mountain Bike", VEHICLE_GROUP_BIKE, 1.00, 1.00, 1},
+	{"Beagle", VEHICLE_GROUP_PLANE, 1.00, 1.00, 2},
+	{"Cropdust", VEHICLE_GROUP_PLANE, 1.00, 1.00, 1},
+	{"Stuntplane", VEHICLE_GROUP_PLANE, 1.00, 1.00, 1},
+	{"Tanker", VEHICLE_GROUP_TRUCK, 121.00, 130.00, 2},
+	{"Roadtrain", VEHICLE_GROUP_TRUCK, 143.00, 150.00, 2},
+	{"Nebula", VEHICLE_GROUP_CAR, 158.00, 60.00, 4},
+	{"Majestic", VEHICLE_GROUP_CAR, 158.00, 45.00, 2},
+	{"Buccaneer", VEHICLE_GROUP_CAR, 165.00, 50.00, 2},
+	{"Shamal", VEHICLE_GROUP_PLANE, 1.00, 1.00, 1},
+	{"Hydra", VEHICLE_GROUP_PLANE, 1.00, 1.00, 1},
+	{"FCR-900", VEHICLE_GROUP_MOTORCYCLE, 169.00, 50.00, 2},
+	{"NRG-500", VEHICLE_GROUP_MOTORCYCLE, 190.00, 40.00, 2},
+	{"HPV1000", VEHICLE_GROUP_MOTORCYCLE, 168.00, 60.00, 2},
+	{"Cement Truck", VEHICLE_GROUP_TRUCK, 131.00, 30.00, 2},
+	{"Towtruck", VEHICLE_GROUP_CAR, 162.00, 60.00, 2},
+	{"Fortune", VEHICLE_GROUP_CAR, 159.00, 40.00, 2},
+	{"Cadrona", VEHICLE_GROUP_CAR, 150.00, 45.00, 2},
+	{"FBI Truck", VEHICLE_GROUP_CAR, 178.00, 80.00, 2},
+	{"Willard", VEHICLE_GROUP_CAR, 150.00, 55.00, 4},
+	{"Forklift", VEHICLE_GROUP_OTHER, 61.00, 10.00, 1},
+	{"Tractor", VEHICLE_GROUP_OTHER, 71.00, 30.00, 1},
+	{"Combine", VEHICLE_GROUP_OTHER, 111.00, 20.00, 1},
+	{"Feltzer", VEHICLE_GROUP_CAR, 168.00, 50.00, 2},
+	{"Remington", VEHICLE_GROUP_CAR, 170.00, 60.00, 2},
+	{"Slamvan", VEHICLE_GROUP_CAR, 159.00, 60.00, 2},
+	{"Blade", VEHICLE_GROUP_CAR, 174.00, 62.00, 2},
+	{"Freight", VEHICLE_GROUP_TRAIN, 1.00, 1.00, 500},
+	{"Brownstreak", VEHICLE_GROUP_TRAIN, 1.00, 1.00, 500},
+	{"Vortex", VEHICLE_GROUP_OTHER, 100.00, 20.00, 1},
+	{"Vincent", VEHICLE_GROUP_CAR, 150.00, 40.00, 4},
+	{"Bullet", VEHICLE_GROUP_CAR, 204.00, 60.00, 2},
+	{"Clover", VEHICLE_GROUP_CAR, 165.00, 45.00, 2},
+	{"Sadler", VEHICLE_GROUP_CAR, 152.00, 60.00, 2},
+	{"Firetruck LA", VEHICLE_GROUP_TRUCK, 149.00, 120.00, 2},
+	{"Hustler", VEHICLE_GROUP_CAR, 148.00, 80.00, 2},
+	{"Intruder", VEHICLE_GROUP_CAR, 150.00, 60.00, 4},
+	{"Primo", VEHICLE_GROUP_CAR, 144.00, 55.00, 4},
+	{"Cargobob", VEHICLE_GROUP_HELICOPTER, 1.00, 1.00, 2},
+	{"Tampa", VEHICLE_GROUP_CAR, 154.00, 60.00, 2},
+	{"Sunrise", VEHICLE_GROUP_CAR, 146.00, 60.00, 4},
+	{"Merit", VEHICLE_GROUP_CAR, 158.00, 55.00, 4},
+	{"Utility", VEHICLE_GROUP_CAR, 122.00, 60.00, 2},
+	{"Nevada", VEHICLE_GROUP_PLANE, 1.00, 1.00, 1},
+	{"Yosemite", VEHICLE_GROUP_CAR, 145.00, 60.00, 2},
+	{"Windsor", VEHICLE_GROUP_CAR, 159.00, 45.00, 2},
+	{"Monster A", VEHICLE_GROUP_CAR, 111.00, 45.00, 2},
+	{"Monster B", VEHICLE_GROUP_CAR, 111.00, 60.00, 2},
+	{"Uranus", VEHICLE_GROUP_CAR, 157.00, 80.00, 2},
+	{"Jester", VEHICLE_GROUP_CAR, 179.00, 60.00, 2},
+	{"Sultan", VEHICLE_GROUP_CAR, 170.00, 60.00, 4},
+	{"Stratum", VEHICLE_GROUP_CAR, 155.00, 60.00, 4},
+	{"Elegy", VEHICLE_GROUP_CAR, 179.00, 60.00, 2},
+	{"Raindance", VEHICLE_GROUP_HELICOPTER, 1.00, 1.00, 2},
+	{"RC Tiger", VEHICLE_GROUP_RC, 1.00, 1.00, 1},
+	{"Flash", VEHICLE_GROUP_CAR, 166.00, 60.00, 2},
+	{"Tahoma", VEHICLE_GROUP_CAR, 161.00, 40.00, 4},
+	{"Savanna", VEHICLE_GROUP_CAR, 174.00, 50.00, 4},
+	{"Bandito", VEHICLE_GROUP_CAR, 147.00, 30.00, 1},
+	{"Freight Flat Trailer", VEHICLE_GROUP_TRAIN, 1.00, 1.00, 0},
+	{"Streak Trailer", VEHICLE_GROUP_TRAIN, 1.00, 1.00, 0},
+	{"Kart", VEHICLE_GROUP_OTHER, 94.00, 10.00, 1},
+	{"Mower", VEHICLE_GROUP_OTHER, 61.00, 15.00, 1},
+	{"Dune", VEHICLE_GROUP_TRUCK, 111.00, 80.00, 2},
+	{"Sweeper", VEHICLE_GROUP_OTHER, 61.00, 20.00, 1},
+	{"Broadway", VEHICLE_GROUP_CAR, 159.00, 45.00, 2},
+	{"Tornado", VEHICLE_GROUP_CAR, 159.00, 40.00, 2},
+	{"AT400", VEHICLE_GROUP_PLANE, 1.00, 1.00, 1},
+	{"DFT-30", VEHICLE_GROUP_TRUCK, 131.00, 80.00, 2},
+	{"Huntley", VEHICLE_GROUP_CAR, 159.00, 80.00, 4},
+	{"Stafford", VEHICLE_GROUP_CAR, 154.00, 60.00, 4},
+	{"BF-400", VEHICLE_GROUP_MOTORCYCLE, 168.00, 35.00, 2},
+	{"Newsvan", VEHICLE_GROUP_CAR, 137.00, 60.00, 4},
+	{"Tug", VEHICLE_GROUP_OTHER, 86.00, 15.00, 1},
+	{"Petrol Trailer", VEHICLE_GROUP_TRAILER, 1.00, 1.00, 0},
+	{"Emperor", VEHICLE_GROUP_CAR, 154.00, 60.00, 4},
+	{"Wayfarer", VEHICLE_GROUP_HELICOPTER, 158.00, 50.00, 2},
+	{"Euros", VEHICLE_GROUP_CAR, 166.00, 50.00, 2},
+	{"Hotdog", VEHICLE_GROUP_CAR, 109.00, 60.00, 2},
+	{"Club", VEHICLE_GROUP_CAR, 164.00, 65.00, 2},
+	{"Freight Box Trailer", VEHICLE_GROUP_TRAIN, 1.00, 1.00, 0},
+	{"Article Trailer 3", VEHICLE_GROUP_TRAILER, 1.00, 1.00, 0},
+	{"Andromada", VEHICLE_GROUP_PLANE, 1.00, 1.00, 500},
+	{"Dodo", VEHICLE_GROUP_PLANE, 1.00, 1.00, 2},
+	{"RC Cam", VEHICLE_GROUP_RC, 1.00, 1.00, 2},
+	{"Launch", VEHICLE_GROUP_BOAT, 1.00, 1.00, 1},
+	{"Police Car", VEHICLE_GROUP_CAR, 177.00, 60.00, 4},
+	{"Police Car", VEHICLE_GROUP_CAR, 177.00, 60.00, 4},
+	{"Police Car", VEHICLE_GROUP_CAR, 177.00, 60.00, 4},
+	{"Police Ranger", VEHICLE_GROUP_CAR, 159.00, 90.00, 2},
+	{"Picador", VEHICLE_GROUP_CAR, 152.00, 40.00, 2},
+	{"S.W.A.T.", VEHICLE_GROUP_CAR, 111.00, 30.00, 2},
+	{"Alpha", VEHICLE_GROUP_CAR, 170.00, 60.00, 2},
+	{"Phoenix", VEHICLE_GROUP_CAR, 172.00, 60.00, 2},
+	{"Glendale Shit", VEHICLE_GROUP_CAR, 148.00, 30.00, 4},
+	{"Sadler Shit", VEHICLE_GROUP_CAR, 152.00, 40.00, 2},
+	{"Baggage Trailer A", VEHICLE_GROUP_TRAILER, 1.00, 1.00, 0},
+	{"Baggage Trailer B", VEHICLE_GROUP_TRAILER, 1.00, 1.00, 0},
+	{"Tug Stairs Trailer", VEHICLE_GROUP_TRAILER, 1.00, 1.00, 0},
+	{"Boxville", VEHICLE_GROUP_TRUCK, 108.00, 90.00, 4},
+	{"Farm Trailer", VEHICLE_GROUP_TRAILER, 1.00, 1.00, 0},
+	{"Utility Trailer", VEHICLE_GROUP_TRAILER, 1.00, 1.00, 0}
+};
+
+enum VEHICLE_TYPES
+{
+	VEHICLE_TYPE_NONE,
+	VEHICLE_TYPE_RENT,
+	VEHICLE_TYPE_PLAYER,
+	VEHICLE_TYPE_JOB,
+	VEHICLE_TYPE_FACTION,
+	VEHICLE_TYPE_SELL,
+	VEHICLE_TYPE_DRIVING_SCHOOL,
+	VEHICLE_TYPE_FREE,
+	VEHICLE_TYPE_AUTOPILOT
+};
+
+enum VEHICLE_STATES
+{
+	VEHICLE_STATE_NONE,
+	VEHICLE_STATE_SPAWNED,
+	VEHICLE_STATE_DEAD
+};
+
+enum VEHICLE_GAME_STATES
+{
+	VEHICLE_GAME_STATE_NORMAL,
+	VEHICLE_GAME_STATE_POUNDED
+};
+
+enum enum_VehicleInfo
+{
+	vinfo_VEHICLE_ID,
+
+	//db
+	vinfo_ID,
+	
+	//info
+	vinfo_MODELID,
+	VEHICLE_TYPES:vinfo_TYPE,
+	VEHICLE_STATES:vinfo_STATE,
+	VEHICLE_GAME_STATES:vinfo_GAME_STATE,
+	vinfo_NUMBER_PLATE[32],
+	Float:vinfo_FUEL,
+	vinfo_RESPAWN_DELAY,
+	vinfo_ADDSIREN,
+	Float:vinfo_HEALTH,
+	Float:vinfo_DISTANCE,
+	vinfo_DRIVER,
+
+	//world
+	Float:vinfo_SPAWN_POS[3],
+	Float:vinfo_SPAWN_ANGLE,
+	Float:vinfo_POS[3],
+	Float:vinfo_ANGLE,
+	vinfo_INTERIORID,
+	vinfo_WORLDID,
+
+	//color
+	vinfo_COLOR1,
+	vinfo_COLOR2,
+	vinfo_PAINTJOB,
+
+	//damage
+	vinfo_DAMAGE_PANELS,
+	vinfo_DAMAGE_DOORS,
+	vinfo_DAMAGE_LIGHTS,
+	vinfo_DAMAGE_TIRES,
+
+	//params
+	vinfo_PARAMS_ENGINE,
+	vinfo_PARAMS_LIGHTS,
+	vinfo_PARAMS_ALARM,
+	vinfo_PARAMS_DOORS,
+	vinfo_PARAMS_BONNET,
+	vinfo_PARAMS_BOOT,
+	vinfo_PARAMS_OBJECTIVE,
+	vinfo_RADIO,
+	vinfo_ID_PLAYER,
+	vinfo_ID_JOB_POINT,
+	vinfo_PRICE,
+	vinfo_LEVEL,
+
+	//other
+	Text3D:vinfo_INFO_LABEL
+};
+new VehicleInfo[MAX_VEHICLES][enum_VehicleInfo],
+	Iterator:VehicleInfo<MAX_VEHICLES>;
+
+new pVehicleIndex[MAX_PLAYERS] = {INVALID_VEHICLE_INDEX, ...},
+	pLastVehicleIndex[MAX_PLAYERS] = {INVALID_VEHICLE_INDEX, ...};
+
+forward OnVehicleRecreated(index);
+forward OnPlayerGetVehicleIndex(playerid);
+
+forward OnVehicleInfoLoad(vehindex);
+forward OnVehicleLoaded(vehindex);
+forward OnVehicleSpawnEx(vehindex);
+forward OnVehicleDeathEx(vehindex, killerid);
+forward OnVehicleDestroyedEx(vehindex, vehicleid);
