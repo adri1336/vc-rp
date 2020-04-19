@@ -2,14 +2,14 @@
 Servidor de SA-MP en la ciudad de Vice City creado sin base.
 
 ## Dependencias
-SA-MP 0.3.DL-R1 server (https://archive.org/download/sa-mp-0.3.dl/samp03DL_svr_R1_win32.zip)
-Pawn Compiler 3.10.8 (https://github.com/pawn-lang/compiler/releases/tag/v3.10.8)
-sscanf 2.8.2 (https://github.com/maddinat0r/sscanf/releases/tag/v2.8.2)
-GPS (https://github.com/kristoisberg/samp-gps-plugin/releases/tag/1.4.0)
-Streamer 2.9.4 (https://github.com/samp-incognito/samp-streamer-plugin/releases/tag/v2.9.4)
-MySQL R41-4 (https://github.com/pBlueG/SA-MP-MySQL/releases/tag/R41-4)
-Pawn.Regex 1.1.2 (https://github.com/urShadow/Pawn.Regex/releases/tag/1.1.2)
-samp-mysql-yinline-include v1.0.1 (https://github.com/maddinat0r/samp-mysql-yinline-include/releases/tag/v1.0.1)
+- SA-MP 0.3.DL-R1 server (https://archive.org/download/sa-mp-0.3.dl/samp03DL_svr_R1_win32.zip)
+- Pawn Compiler 3.10.8 (https://github.com/pawn-lang/compiler/releases/tag/v3.10.8)
+- sscanf 2.8.2 (https://github.com/maddinat0r/sscanf/releases/tag/v2.8.2)
+- GPS (https://github.com/kristoisberg/samp-gps-plugin/releases/tag/1.4.0)
+- Streamer 2.9.4 (https://github.com/samp-incognito/samp-streamer-plugin/releases/tag/v2.9.4)
+- MySQL R41-4 (https://github.com/pBlueG/SA-MP-MySQL/releases/tag/R41-4)
+- Pawn.Regex 1.1.2 (https://github.com/urShadow/Pawn.Regex/releases/tag/1.1.2)
+- samp-mysql-yinline-include v1.0.1 (https://github.com/maddinat0r/samp-mysql-yinline-include/releases/tag/v1.0.1)
 
 ## Instalación rapida
 1. Instala las dependencias
