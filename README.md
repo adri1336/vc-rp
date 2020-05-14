@@ -10,6 +10,7 @@ Servidor de SA-MP en la ciudad de Vice City creado sin base.
 - MySQL R41-4 (https://github.com/pBlueG/SA-MP-MySQL/releases/tag/R41-4)
 - Pawn.Regex 1.1.2 (https://github.com/urShadow/Pawn.Regex/releases/tag/1.1.2)
 - samp-mysql-yinline-include v1.0.1 (https://github.com/maddinat0r/samp-mysql-yinline-include/releases/tag/v1.0.1)
+- YSI 4.0.2 (https://github.com/pawn-lang/YSI-Includes/releases/tag/v4.0.2)
 
 ## Instalación rapida
 1. Instala las dependencias
