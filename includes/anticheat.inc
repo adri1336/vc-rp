@@ -302,10 +302,16 @@ hook OnPlayerUpdate(playerid)
 	}
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//CHEAT_PLAYER_SPEED
-	if(playerstate == PLAYER_STATE_ONFOOT)
+	if(playerstate == PLAYER_STATE_ONFOOT && !ac_IsPlayerJumping(playerid) && GetPlayerSurfingVehicleID(playerid) == INVALID_VEHICLE_ID && player_action != SPECIAL_ACTION_JETPACK)
 	{
-		if(ac_GetPlayerSpeed(playerid) > ac_PlayerSpeed_MaxValue)
-		OnPlayerCheatPredetected(playerid, _:CHEAT_PLAYER_SPEED);
+		new Float:playerspeed_X, Float:playerspeed_Y, Float:playerspeed_Z;
+		GetPlayerVelocity(playerid, playerspeed_X, playerspeed_Y, playerspeed_Z);
+		
+		// Si esta agachado (GUNCROUCHFWD) y la velocidad en ambos ejes (x, y) es superior a 0.08
+		if(GetPlayerAnimationIndex(playerid) == 1159 && (floatabs(playerspeed_X) > 0.08 || floatabs(playerspeed_Y) > 0.08)) OnPlayerCheatPredetected(playerid, _:CHEAT_PLAYER_SPEED);
+		
+		// Si ambas velocidades son superiores a 0.30, excepto la de caída
+		if(floatabs(playerspeed_X) > 0.30 || floatabs(playerspeed_Y) > 0.30) OnPlayerCheatPredetected(playerid, _:CHEAT_PLAYER_SPEED);
 	}
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//CHEAT_VEHICLE_SPEED
@@ -574,6 +580,16 @@ stock ac_GetPlayerSpeed(vehicleid)
 	new Float:xPos[3];
 	GetPlayerVelocity(vehicleid, xPos[0], xPos[1], xPos[2]);
 	return floatround(floatsqroot(xPos[0] * xPos[0] + xPos[1] * xPos[1] + xPos[2] * xPos[2]) * 170.00);
+}
+
+stock bool:ac_IsPlayerJumping(playerid)
+{
+	switch(GetPlayerAnimationIndex(playerid))
+	{
+		case 1195 .. 1198, 1438 .. 1440, 1061 .. 1064: return true;
+	}
+
+	return false;
 }
 
 stock ac_VehicleModelHasDoors(modelid)
